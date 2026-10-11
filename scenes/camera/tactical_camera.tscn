@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/camera/tactical_camera.gd" id="1_camera"]
+
+[node name="TacticalCamera" type="Camera3D"]
+current = true
+fov = 55.0
+near = 0.2
+far = 400.0
+script = ExtResource("1_camera")

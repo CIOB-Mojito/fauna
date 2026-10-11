@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/units/unit_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "Oso 413"
+role_text = "Blindado"
+cost = 350
+max_health = 90.0
+vision_radius = 10.0
+move_speed = 6.5
+attack_range_min = 1.0
+attack_range_max = 6.0
+damage = 4.0
+reload_time = 1.4
+amphibious = false
+armor_front = 1.2
+armor_side = 0.9
+armor_rear = 0.6
+armor_top = 0.6
+armor_bottom = 0.0
+ammo = 100
+fuel = 100.0
+fuel_consumption = 8.8

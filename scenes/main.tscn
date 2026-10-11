@@ -1,0 +1,115 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/map/terrain.tscn" id="2_terrain"]
+[ext_resource type="PackedScene" path="res://scenes/units/command_vehicle.tscn" id="3_vehicle"]
+[ext_resource type="PackedScene" path="res://scenes/camera/tactical_camera.tscn" id="4_camera"]
+[ext_resource type="PackedScene" path="res://scenes/markers/move_order_marker.tscn" id="5_marker"]
+[ext_resource type="Script" path="res://scripts/controls/touch_input.gd" id="6_touch"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tactical_minimap.tscn" id="7_minimap"]
+[ext_resource type="PackedScene" path="res://scenes/ui/unit_panel.tscn" id="8_unit_panel"]
+[ext_resource type="PackedScene" path="res://scenes/ui/command_panel.tscn" id="9_command_panel"]
+[ext_resource type="PackedScene" path="res://scenes/units/scout.tscn" id="10_scout"]
+[ext_resource type="PackedScene" path="res://scenes/ui/group_panel.tscn" id="11_group_panel"]
+[ext_resource type="PackedScene" path="res://scenes/ui/selection_box.tscn" id="12_selection_box"]
+[ext_resource type="PackedScene" path="res://scenes/units/recon_scout.tscn" id="13_recon_scout"]
+[ext_resource type="PackedScene" path="res://scenes/units/oso_413.tscn" id="14_oso"]
+[ext_resource type="PackedScene" path="res://scenes/units/oso_scout.tscn" id="15_oso_scout"]
+[ext_resource type="PackedScene" path="res://scenes/units/oso_tank.tscn" id="16_oso_tank"]
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 1
+background_color = Color(0.36, 0.47, 0.6, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.65, 0.75, 1)
+ambient_light_energy = 0.8
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.872665, -0.698132, 0)
+light_energy = 1.1
+
+[node name="Terrain" parent="." instance=ExtResource("2_terrain")]
+
+[node name="CommandVehicle" parent="." instance=ExtResource("3_vehicle")]
+position = Vector3(-9, 0, 5)
+
+[node name="Scout" parent="." instance=ExtResource("10_scout")]
+position = Vector3(-14, 0, 8.5)
+
+[node name="ReconScout" parent="." instance=ExtResource("13_recon_scout")]
+position = Vector3(-14, 0, 12)
+
+[node name="Oso413A" parent="." instance=ExtResource("14_oso")]
+position = Vector3(9, 0, -3.4)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="Oso413B" parent="." instance=ExtResource("14_oso")]
+position = Vector3(9, 0, 0)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="Oso413C" parent="." instance=ExtResource("14_oso")]
+position = Vector3(9, 0, 3.4)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="OsoScoutA" parent="." instance=ExtResource("15_oso_scout")]
+position = Vector3(13, 0, -3.4)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="OsoScoutB" parent="." instance=ExtResource("15_oso_scout")]
+position = Vector3(13, 0, 0)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="OsoScoutC" parent="." instance=ExtResource("15_oso_scout")]
+position = Vector3(13, 0, 3.4)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="OsoTankA" parent="." instance=ExtResource("16_oso_tank")]
+position = Vector3(17, 0, -3.4)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="OsoTankB" parent="." instance=ExtResource("16_oso_tank")]
+position = Vector3(17, 0, 0)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="OsoTankC" parent="." instance=ExtResource("16_oso_tank")]
+position = Vector3(17, 0, 3.4)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="TacticalCamera" parent="." instance=ExtResource("4_camera")]
+
+[node name="MoveOrderMarker" parent="." instance=ExtResource("5_marker")]
+visible = false
+
+[node name="TouchInput" type="Node" parent="."]
+script = ExtResource("6_touch")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="SelectionBox" parent="HUD" instance=ExtResource("12_selection_box")]
+
+[node name="Minimap" parent="HUD" instance=ExtResource("7_minimap")]
+
+[node name="UnitPanel" parent="HUD" instance=ExtResource("8_unit_panel")]
+
+[node name="GroupPanel" parent="HUD" instance=ExtResource("11_group_panel")]
+
+[node name="CommandPanel" parent="HUD" instance=ExtResource("9_command_panel")]
+
+[node name="Hint" type="Label" parent="HUD"]
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 900.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.85)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "Toca el vehículo para seleccionar · Toca el terreno para ordenar la marcha
+Arrastra para mover la cámara · Pellizca para acercar o alejar"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/units/unit_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "Oso 47"
+role_text = "Tanque"
+cost = 400
+max_health = 120.0
+vision_radius = 8.5
+move_speed = 4.5
+attack_range_min = 0.8
+attack_range_max = 7.0
+damage = 7.0
+reload_time = 5.0
+amphibious = false
+armor_front = 2.0
+armor_side = 1.5
+armor_rear = 1.0
+armor_top = 2.0
+armor_bottom = 0.0
+ammo = 90
+fuel = 100.0
+fuel_consumption = 9.5
